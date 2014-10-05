@@ -33,6 +33,10 @@ module.exports = function(grunt) {
         files: ['<%= config.src %>/{styleguide,scripts}/{,*/}*.{md,hbs,yml,html}'],
         tasks: ['assemble']
       },
+      compass: {
+        files: ['<%= config.src %>/styleguide/{,*/}*.scss'],
+        tasks: ['compass']
+      },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -77,6 +81,25 @@ module.exports = function(grunt) {
       }
     },
 
+    compass: {                  // Task
+      dist: {                   // Target
+        options: {              // Target options
+          sassDir: '<%= config.src %>',
+          cssDir: '<%= config.dist %>/assets',
+          environment: 'development',
+          relativeAssets: true,
+          outputStyle: 'expanded'
+        }
+      },
+      dev: {                    // Another target
+        options: {
+          sassDir: '<%= config.src %>/styleguide',
+          cssDir: '<%= config.dist %>/assets/stylesheets',
+          outputStyle: 'nested'
+        }
+      }
+    },
+
     copy: {
       bootstrap: {
         expand: true,
@@ -99,6 +122,7 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('grunt-contrib-compass');
 
   grunt.registerTask('server', [
     'build',
@@ -108,6 +132,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean',
+    'compass',
     'copy',
     'assemble'
   ]);

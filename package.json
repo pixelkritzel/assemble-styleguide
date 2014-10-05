@@ -1,18 +1,18 @@
 {
-  "name": "assemble-styleguide",
-  "description": "A starting point for using assemble.io as a frontend styleguide generator.",
-  "version": "0.1.0",
-  "homepage": "https://github.com/pixelkritzel/assemble-styleguide",
+  "name": "",
+  "description": "",
+  "version": "",
+  "homepage": "",
   "author": {
-    "name": "Timo Zoeller",
-    "url": "http://github.com/pixelkritzel/"
+    "name": "",
+    "url": ""
   },
   "repository": {
-    "type": "git",
-    "url": "git://github.com/pixelkritzel/assemble-styleguide.git"
+    "type": "",
+    "url": ""
   },
   "bugs": {
-    "url": "https://github.com/pixelkritzel/assemble-styleguide/issues"
+    "url": ""
   },
   "engines": {
     "node": ">=0.10"
@@ -35,13 +35,5 @@
       "type": "MIT",
       "url": "https://github.com/pixelkritzel/assemble-styleguide/blob/master/LICENSE-MIT"
     }
-  ],
-  "keywords": [
-    "assemble",
-    "templates",
-    "handlebars",
-    "site generator",
-    "site builder",
-    "grunt"
   ]
 }

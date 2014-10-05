@@ -30,7 +30,7 @@ module.exports = function(grunt) {
 
     watch: {
       assemble: {
-        files: ['<%= config.src %>/{content,data,templates}/{,*/}*.{md,hbs,yml}'],
+        files: ['<%= config.src %>/{styleguide,scripts}/{,*/}*.{md,hbs,yml,html}'],
         tasks: ['assemble']
       },
       livereload: {
@@ -67,12 +67,12 @@ module.exports = function(grunt) {
         options: {
           flatten: true,
           assets: '<%= config.dist %>/assets',
-          layout: '<%= config.src %>/templates/layouts/default.hbs',
+          layout: 'assemble-styleguide/layouts/default.hbs',
           data: '<%= config.src %>/data/*.{json,yml}',
-          partials: '<%= config.src %>/templates/partials/*.hbs'
+          partials: 'assemble-styleguide/partials/*.hbs'
         },
         files: {
-          '<%= config.dist %>/': ['<%= config.src %>/templates/pages/*.hbs']
+          '<%= config.dist %>/': ['<%= config.src %>/styleguide/{,*/}*.hbs', '<%= config.src %>/scripts/{,*/}*.hbs']
         }
       }
     },

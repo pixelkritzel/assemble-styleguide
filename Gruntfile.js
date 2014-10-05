@@ -37,6 +37,14 @@ module.exports = function(grunt) {
         files: ['<%= config.src %>/styleguide/{,*/}*.scss'],
         tasks: ['compass']
       },
+      neuter: {
+        files: ['<%= config.src %>/scripts/{,*/}*.js'],
+        tasks: ['neuter']
+      },
+      copy: {
+        files: ['styleguide/{,*/}*.*', '<%= config.src %>/data/{,*/}*', '<%= config.src %>/assets/{,*/}*'],
+        tasks: ['copy']
+      },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -100,21 +108,40 @@ module.exports = function(grunt) {
       }
     },
 
-    copy: {
-      bootstrap: {
-        expand: true,
-        cwd: 'bower_components/bootstrap/dist/',
-        src: '**',
-        dest: '<%= config.dist %>/assets/'
-      },
-      theme: {
-        expand: true,
-        cwd: 'src/assets/',
-        src: '**',
-        dest: '<%= config.dist %>/assets/css/'
+    neuter: {
+      application: {
+        src: '<%= config.src %>/scripts/main.js',
+        dest: '<%= config.dist %>/assets/scripts/main.js'
       }
     },
 
+    copy: {
+      assets: {
+        files: [{
+            expand: true,
+            dot: true,
+            cwd: '<%= config.src %>',
+            dest: '<%= config.dist %>',
+            src: [
+                'assets/{,*/}*',
+            ]
+        }]
+      },
+      // styleguide: {
+      //   expand: true,
+      //   dot: true,
+      //   cwd: 'styleguide',
+      //   dest: '<%= config.dist %>/styleguide',
+      //   src: '{,*/}*.*'
+      // },
+      data: {
+        expand: true,
+        dot: true,
+        cwd: '<%= config.src %>/data',
+        dest: '<%= config.dist %>/data',
+        src: '{,*/}*.*'
+      }
+    },
     // Before generating any new files,
     // remove any previously-created files.
     clean: ['<%= config.dist %>/**/*.{html,xml}']
@@ -123,6 +150,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-neuter');
 
   grunt.registerTask('server', [
     'build',
@@ -133,6 +161,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'clean',
     'compass',
+    'neuter',
     'copy',
     'assemble'
   ]);

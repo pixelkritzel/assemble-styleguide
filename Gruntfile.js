@@ -92,18 +92,11 @@ module.exports = function(grunt) {
     compass: {                  // Task
       dist: {                   // Target
         options: {              // Target options
-          sassDir: '<%= config.src %>',
-          cssDir: '<%= config.dist %>/assets',
+          sassDir: '<%= config.src %>/styleguide',
+          cssDir: '<%= config.dist %>/assets/stylesheets',
           environment: 'development',
           relativeAssets: true,
           outputStyle: 'expanded'
-        }
-      },
-      dev: {                    // Another target
-        options: {
-          sassDir: '<%= config.src %>/styleguide',
-          cssDir: '<%= config.dist %>/assets/stylesheets',
-          outputStyle: 'nested'
         }
       }
     },

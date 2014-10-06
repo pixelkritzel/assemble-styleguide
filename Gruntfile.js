@@ -1,12 +1,3 @@
-/*
- * Generated on 2014-10-05
- * generator-assemble v0.5.0
- * https://github.com/assemble/generator-assemble
- *
- * Copyright (c) 2014 Hariadi Hinta
- * Licensed under the MIT license.
- */
-
 'use strict';
 
 // # Globbing
@@ -98,6 +89,15 @@ module.exports = function(grunt) {
           relativeAssets: true,
           outputStyle: 'expanded'
         }
+      },
+      styleguide: {                   // Target
+        options: {              // Target options
+          sassDir: 'assemble-styleguide/stylesheets',
+          cssDir: '<%= config.dist %>/styleguide',
+          environment: 'development',
+          relativeAssets: true,
+          outputStyle: 'expanded'
+        }
       }
     },
 
@@ -105,6 +105,10 @@ module.exports = function(grunt) {
       application: {
         src: '<%= config.src %>/scripts/main.js',
         dest: '<%= config.dist %>/assets/scripts/main.js'
+      },
+      styleguide: {
+        src: 'assemble-styleguide/scripts/styleguide.js',
+        dest: '<%= config.dist %>/styleguide/styleguide.js'
       }
     },
 

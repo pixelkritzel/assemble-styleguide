@@ -1,1 +1,2 @@
-console.log('Step');
+require('./prism.js');
+require('./nav.js');

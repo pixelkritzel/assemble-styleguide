@@ -1,0 +1,35 @@
+.sg-entry {
+  position: relative;
+  padding:  20px 0;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    height: 1px;
+    width: 90%;
+    background-color: rgba(0,0,0,0.3);
+  }
+}
+
+.sg-entry--md {
+  margin: 20px 0;
+}
+
+.sg-entry--html-example-hl {
+  font-weight: bold;
+  margin-bottom: -10px;
+}
+
+.sg-entry--html-example {
+  margin: 20px 0;
+}
+
+.sg-entry--html-example-modifier {
+  margin-bottom: 5px;
+}
+
+.sg-entry--html-code {
+  margin: 20px 0;
+}

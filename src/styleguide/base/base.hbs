@@ -3,3 +3,17 @@ title: 'Base Styles'
 ---
 
 <h1>{{ title }}</h1>
+
+{{#sgEntry modifiers="btn-default, btn-danger, btn-success" identifier="buttons"}}
+
+##Buttons
+
+You can use buttons with ```button``` or ```a``` elements.
+
+~~~HTML~~~
+
+<button class="btn $modifierClass">Click Me</button>
+
+{{/sgEntry}}
+
+{{sgEntry 'base/_dropdown'}}

@@ -25,11 +25,11 @@ module.exports = function(grunt) {
         tasks: ['assemble']
       },
       compass: {
-        files: ['<%= config.src %>/styleguide/{,*/}*.scss'],
+        files: ['<%= config.src %>/styleguide/{,*/}*.scss', 'assemble-styleguide/stylesheets/*.scss'],
         tasks: ['compass']
       },
       neuter: {
-        files: ['<%= config.src %>/scripts/{,*/}*.js'],
+        files: ['<%= config.src %>/scripts/{,*/}*.js', 'assemble-styleguide/scripts/*.js'],
         tasks: ['neuter']
       },
       copy: {
@@ -41,6 +41,7 @@ module.exports = function(grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
+          '<%= config.dist %>/styleguide/*',
           '<%= config.dist %>/{,*/}*.html',
           '<%= config.dist %>/assets/{,*/}*.css',
           '<%= config.dist %>/assets/{,*/}*.js',
@@ -72,7 +73,8 @@ module.exports = function(grunt) {
           assets: '<%= config.dist %>/assets',
           layout: 'assemble-styleguide/layouts/default.hbs',
           data: '<%= config.src %>/data/*.{json,yml}',
-          partials: 'assemble-styleguide/partials/*.hbs'
+          partials: 'assemble-styleguide/partials/*.hbs',
+          helpers: ['assemble-styleguide/helpers/{,*/}*.js' ]
         },
         files: {
           '<%= config.dist %>/': ['<%= config.src %>/styleguide/{,*/}*.hbs', '<%= config.src %>/scripts/{,*/}*.hbs']
@@ -124,13 +126,13 @@ module.exports = function(grunt) {
             ]
         }]
       },
-      // styleguide: {
-      //   expand: true,
-      //   dot: true,
-      //   cwd: 'styleguide',
-      //   dest: '<%= config.dist %>/styleguide',
-      //   src: '{,*/}*.*'
-      // },
+      styleguide: {
+        expand: true,
+        dot: true,
+        cwd: 'assemble-styleguide/assets/',
+        dest: '<%= config.dist %>/styleguide',
+        src: '{,*/}*.*'
+      },
       data: {
         expand: true,
         dot: true,

@@ -2,17 +2,19 @@
   <div class="sg-entry--md">
     {{{ markdownContent }}}
   </div>
-  <div class="sg-entry--html-example-hl">Output:</div>
-  {{#each modifiers}}
-    <div class="sg-entry--html-example">
-      {{#if this}}
-        <div class="sg-entry--html-example-modifier">Modifier-Class: <code>{{ this }}</code></div>
-      {{/if}}
-      {{{sgReplaceModifier ../htmlContent this}}}
+  {{#if htmlContent}}
+    <div class="sg-entry--html-example-hl">Output:</div>
+    {{#each modifiers}}
+      <div class="sg-entry--html-example">
+        {{#if this}}
+          <div class="sg-entry--html-example-modifier">Modifier-Class: <code>{{ this }}</code></div>
+        {{/if}}
+        {{{sgReplaceModifier ../htmlContent this}}}
+      </div>
+    {{/each}}
+    <div class="sg-entry--html-code">
+      <i>HTMl-Source:</i>
+      <pre><code class="language-markup">{{ htmlContent }}</code></pre>
     </div>
-  {{/each}}
-  <div class="sg-entry--html-code">
-<i>HTMl-Source:</i>
-<pre><code class="language-markup">{{ htmlContent }}</code></pre>
-  </div>
+  {{/if}}
 </div>

@@ -54,7 +54,7 @@
         markdownContent = block[0];
         markdownContent = Handlebars.compile(markdownContent)();
         markdownContent = marked(markdownContent);
-        htmlContent = block[1].trim();
+        htmlContent = block[1] ? block[1].trim() : "";
         identifier = options.hash.identifier;
       }
 
@@ -63,7 +63,7 @@
         htmlContent: htmlContent,
         identifier: identifier,
         modifiers: modifiers
-      })
+      });
 
 
 

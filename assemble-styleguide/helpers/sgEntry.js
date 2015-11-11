@@ -35,14 +35,18 @@
         pathArray.pop();
         path = pathArray.join('/');
         path = PATH_PREFIX + path;
-        if(grunt.file.exists( path + '/' + identifier + '.md')) {
+        if(grunt.file.exists( path + '/' + identifier + '.md') || grunt.file.exists( path + '/' + identifier + '.html')) {
           filename = identifier;
-        } else if(grunt.file.exists( path + '/_' + identifier + '.md')) {
+        } else if(grunt.file.exists( path + '/_' + identifier + '.md') || grunt.file.exists( path + '/_' + identifier + '.html')) {
           filename = '_' + identifier;
         }
-        markdownContent = grunt.file.read( path + '/' + filename + '.md');
-        markdownContent = Handlebars.compile(markdownContent)();
-        markdownContent = marked(markdownContent);
+        if (grunt.file.exists( path + '/' + identifier + '.md')) {
+          markdownContent = grunt.file.read( path + '/' + filename + '.md');
+          markdownContent = Handlebars.compile(markdownContent)();
+          markdownContent = marked(markdownContent);
+        } else {
+          markdownContent = null;
+        }
         if (grunt.file.exists( path + '/' + filename + '.html') ) {
           htmlContent = grunt.file.read( path + '/' + filename + '.html').trim();
         } else {

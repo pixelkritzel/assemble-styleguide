@@ -3,7 +3,7 @@
 
 
     Handlebars.registerHelper('sgReplaceModifier', function(htmlString, modifier) {
-      htmlString = htmlString.replace('$modifierClass', modifier)
+      htmlString = htmlString.replace(/\$modifierClass/g, modifier);
 
       return new Handlebars.SafeString(htmlString);
     });
